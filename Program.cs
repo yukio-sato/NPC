@@ -70,7 +70,9 @@ if (mensagem == "Buscando")
  {
     machucado = false;
     Console.ForegroundColor = ConsoleColor.Green;
-    Console.WriteLine("\nSe curou da condição: Machucado\n");
+    Console.Write("\n-- Se curou da condição: ");
+                 Console.ForegroundColor = ConsoleColor.Red;
+     Console.WriteLine("Machucado --\n");
  }
 }
 //lutando
@@ -81,15 +83,24 @@ else if (mensagem == "Lutando")
  if (surpresa > 49)
  {
     machucado = true;
-     Console.ForegroundColor = ConsoleColor.Cyan;
-     Console.WriteLine("\nEsta com a condição: Machucado\n");
+     Console.ForegroundColor = ConsoleColor.Gray;
+     Console.Write("\n-- Esta com a condição: ");
+                  Console.ForegroundColor = ConsoleColor.Red;
+     Console.WriteLine("Machucado --\n");
      surpresa = new Random().Next(0,100);
  if (surpresa <= 50)
 {
+             inicio = mensagem;
     mensagem = "Caído";
     Console.ForegroundColor = ConsoleColor.DarkRed;
-    Console.WriteLine("Morreu lutando com a condição: Machucado\n");
-}
+    Console.Write("-- Morreu ");
+        Console.ForegroundColor = ConsoleColor.Yellow;
+    Console.Write("lutando ");
+        Console.ForegroundColor = ConsoleColor.DarkRed;
+     Console.Write("com a condição: ");
+             Console.ForegroundColor = ConsoleColor.Red;
+     Console.WriteLine("Machucado --\n");
+     }
  }
  else if (surpresa <= 49 && inimigo == true)
  {
@@ -103,15 +114,24 @@ else if (mensagem == "Correndo")
  surpresa = new Random().Next(0,100);
  if (surpresa <= 25 && machucado == true)
  {
+         inicio = mensagem;
     mensagem = "Caído";
     Console.ForegroundColor = ConsoleColor.DarkRed;
-    Console.WriteLine("Morreu correndo com a condição: Machucado\n");
- }
+    Console.Write("-- Morreu ");
+        Console.ForegroundColor = ConsoleColor.Yellow;
+    Console.Write("correndo ");
+        Console.ForegroundColor = ConsoleColor.DarkRed;
+     Console.Write("com a condição: ");
+             Console.ForegroundColor = ConsoleColor.Red;
+     Console.WriteLine("Machucado --\n");
+      }
  else if (surpresa <= 50 && machucado == true)
  {
     machucado = false;
     Console.ForegroundColor = ConsoleColor.Green;
-    Console.WriteLine("\nSe curou da condição: Machucado\n");
+    Console.Write("\n-- Se curou da condição: ");
+                 Console.ForegroundColor = ConsoleColor.Red;
+     Console.WriteLine("Machucado --\n");
  }
   else if (surpresa > 50 && inimigo == true)
  {
