@@ -42,6 +42,7 @@ else
 };
 
 // resultado
+Console.BackgroundColor = ConsoleColor.Black;
     Console.ForegroundColor = ConsoleColor.DarkBlue;
 Console.Write($"{rodadas,2}# ");
     Console.ForegroundColor = ConsoleColor.Yellow;
@@ -56,33 +57,29 @@ Console.Write($"Eliminado = [{((mensagem=="Caído") ? "S":"N")}] ");
 Console.Write($"=> [{mensagem,-8}]\n");
 
 
-
 // "surpresas"
-//buscando
-if (mensagem == "Buscando")
+surpresa = new Random().Next(0,100);
+switch (mensagem)
 {
- surpresa = new Random().Next(0,100);
- if (surpresa > 49)
- {
-    inimigo = true;
- }
+    case "Buscando":
+
+if (surpresa > 49)
+ {inimigo = true;}
  else if (surpresa <= 49 && machucado == true)
  {
     machucado = false;
-    Console.ForegroundColor = ConsoleColor.Green;
+        Console.BackgroundColor = ConsoleColor.DarkGreen;
+            Console.ForegroundColor = ConsoleColor.White;
     Console.Write("\n-- Se curou da condição: ");
-                 Console.ForegroundColor = ConsoleColor.Red;
      Console.WriteLine("Machucado --\n");
  }
-}
-//lutando
+    break;
+    case "Lutando":
 
-else if (mensagem == "Lutando")
-{
- surpresa = new Random().Next(0,100);
  if (surpresa > 49)
  {
     machucado = true;
+        Console.BackgroundColor = ConsoleColor.DarkRed;
      Console.ForegroundColor = ConsoleColor.Gray;
      Console.Write("\n-- Esta com a condição: ");
                   Console.ForegroundColor = ConsoleColor.Red;
@@ -92,13 +89,12 @@ else if (mensagem == "Lutando")
 {
              inicio = mensagem;
     mensagem = "Caído";
-    Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.BackgroundColor = ConsoleColor.DarkGray;
+        Console.ForegroundColor = ConsoleColor.Black;
     Console.Write("-- Morreu ");
-        Console.ForegroundColor = ConsoleColor.Yellow;
     Console.Write("lutando ");
-        Console.ForegroundColor = ConsoleColor.DarkRed;
      Console.Write("com a condição: ");
-             Console.ForegroundColor = ConsoleColor.Red;
+
      Console.WriteLine("Machucado --\n");
      }
  }
@@ -106,45 +102,40 @@ else if (mensagem == "Lutando")
  {
     inimigo = false;
  }
-}
-//correndo
-
-else if (mensagem == "Correndo")
-{
- surpresa = new Random().Next(0,100);
- if (surpresa <= 25 && machucado == true)
+    break;
+    case "Correndo":
+    if (surpresa <= 25 && machucado == true)
  {
          inicio = mensagem;
     mensagem = "Caído";
-    Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.BackgroundColor = ConsoleColor.DarkGray;
+        Console.ForegroundColor = ConsoleColor.Black;
     Console.Write("-- Morreu ");
-        Console.ForegroundColor = ConsoleColor.Yellow;
     Console.Write("correndo ");
-        Console.ForegroundColor = ConsoleColor.DarkRed;
-     Console.Write("com a condição: ");
-             Console.ForegroundColor = ConsoleColor.Red;
-     Console.WriteLine("Machucado --\n");
+    Console.Write("com a condição: ");
+    Console.WriteLine("Machucado --\n");
       }
  else if (surpresa <= 50 && machucado == true)
  {
     machucado = false;
-    Console.ForegroundColor = ConsoleColor.Green;
+    Console.BackgroundColor = ConsoleColor.DarkGreen;
+                Console.ForegroundColor = ConsoleColor.White;
     Console.Write("\n-- Se curou da condição: ");
-                 Console.ForegroundColor = ConsoleColor.Red;
      Console.WriteLine("Machucado --\n");
  }
   else if (surpresa > 50 && inimigo == true)
  {
     inimigo = false;
  }
+    break;
 }
-Thread.Sleep(1000);
+
+Thread.Sleep(100);
 }
-    Console.ForegroundColor = ConsoleColor.Cyan;
+    Console.BackgroundColor = ConsoleColor.DarkBlue;
+    Console.ForegroundColor = ConsoleColor.White;
     Console.Write($"\nO NPC ficou vivo durante ");
-    Console.ForegroundColor = ConsoleColor.DarkCyan;
     Console.Write($"{rodadas-1} ");
-    Console.ForegroundColor = ConsoleColor.Blue;
     Console.WriteLine($"Rodadas");
 
 Console.ResetColor();
